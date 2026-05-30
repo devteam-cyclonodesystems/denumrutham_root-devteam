@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denumrutham • Temple Management System</title>
+    <meta name="description"
+        content="Comprehensive Temple Management SaaS for Archana, Hall Booking, Offerings, Accounting, HR, Inventory, Store, WhatsApp & Live Streaming.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="sidebar-collapsed">
+    <!-- News Ticker -->
+    <div class="news-ticker" id="newsTicker">
+        <!-- Ticker content starts directly (label removed) -->
+        <div class="ticker-content">
+            <div class="ticker-track" id="tickerTrack">
+                <span>ॐ नमः शिवाय | Om Namah Shivaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ॐ गं गणपतये नमः |
+                    Om Gan Ganapataye Namaha &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ॐ नमो भगवते वासुदेवाय | Om
+                    Namo Bhagavate Vasudevaya &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; लोका समस्താ सुखिनो भवन्तु
+                    | Loka Samastha Sukhino Bhavantu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar (permanently minimized) -->
+    <aside class="sidebar collapsed" id="sidebar">
+        <div class="sidebar-branding">
+            <span class="branding-om">ॐ</span>
+            <span>MANTRA</span>
+        </div>
+        <nav class="sidebar-nav" id="sidebarNav">
+            <a href="#dashboard" class="nav-item active" data-page="dashboard" data-tooltip="Dashboard">
+                <i class="fas fa-th-large"></i><span class="icon-label">Dashboard</span>
+            </a>
+            <a href="#archana" class="nav-item" data-page="archana" data-tooltip="Archana">
+                <i class="fas fa-om"></i><span class="icon-label">Archana</span>
+            </a>
+            <a href="#hall-booking" class="nav-item" data-page="hall-booking" data-tooltip="Hall">
+                <i class="fas fa-building"></i><span class="icon-label">Hall</span>
+            </a>
+            <a href="#offerings" class="nav-item" data-page="offerings" data-tooltip="Offerings">
+                <i class="fas fa-hand-holding-dollar"></i><span class="icon-label">Offerings</span>
+            </a>
+            <a href="#accounting" class="nav-item" data-page="accounting" data-tooltip="Accounts">
+                <i class="fas fa-chart-line"></i><span class="icon-label">Accounts</span>
+            </a>
+            <a href="#hr-payroll" class="nav-item" data-page="hr-payroll" data-tooltip="HR">
+                <i class="fas fa-users"></i><span class="icon-label">HRD</span>
+            </a>
+            <a href="#inventory" class="nav-item" data-page="inventory" data-tooltip="Inventory">
+                <i class="fas fa-boxes-stacked"></i><span class="icon-label">Inventory</span>
+            </a>
+            <a href="#store" class="nav-item" data-page="store" data-tooltip="Store">
+                <i class="fas fa-store"></i><span class="icon-label">Store</span>
+            </a>
+            <a href="#communication" class="nav-item" data-page="communication" data-tooltip="Communication">
+                <i class="fas fa-satellite-dish"></i><span class="icon-label">Commun</span>
+            </a>
+            <a href="#nss-karayogam" class="nav-item" data-page="nss-karayogam" data-tooltip="NSS">
+                <i class="fas fa-landmark"></i><span class="icon-label">NSS</span>
+            </a>
+            <a href="#super-admin" class="nav-item" data-page="super-admin" data-tooltip="Super Admin">
+                <i class="fas fa-shield-halved"></i><span class="icon-label">Super Ad</span>
+            </a>
+
+        </nav>
+        <div class="sidebar-footer">
+            <!-- Switch Temple (SuperAdmin only, hidden by default) -->
+            <a href="#" id="switchTempleNavBtn" class="nav-item" style="display:none"
+               onclick="TempleContext.switchTemple(); return false;"
+               data-tooltip="Switch Temple">
+                <i class="fas fa-arrows-rotate"></i><span class="icon-label">Switch Temple</span>
+            </a>
+            <a href="#" class="nav-item help-support-btn" onclick="App.openCustomerCare(); return false;" data-tooltip="Help">
+                <i class="fas fa-headset"></i><span class="icon-label">Help</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Top Header -->
+        <header class="top-header" id="topHeader">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-gopuram"></i></button>
+                <div class="header-banner">
+                    <span class="temple-name" id="headerTempleName">Denumrutham &bull; Mallottu Sree Bhadrakali Devi Temple</span>
+                    <!-- SuperAdmin switch-temple button (hidden for non-SuperAdmin) -->
+                    <button id="switchTempleBannerBtn"
+                        onclick="TempleContext.switchTemple()"
+                        title="Switch Temple"
+                        style="display:none;margin-left:12px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:#fff;border-radius:6px;padding:3px 10px;font-size:0.72rem;cursor:pointer;vertical-align:middle;">
+                        <i class="fas fa-arrows-rotate"></i> Switch Temple
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-datetime" id="headerDatetime"></div>
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-btn active" data-lang="en" onclick="App.switchLang('en')">EN</button>
+                    <button class="lang-btn" data-lang="ml" onclick="App.switchLang('ml')">ML</button>
+                </div>
+                <div class="header-notifications">
+                    <button class="notif-btn" id="notifBtn" data-tooltip="View notifications"><i class="fas fa-bell"></i><span class="notif-badge"
+                            id="notifBadge">0</span></button>
+                    <div class="notif-dropdown" id="notifDropdown">
+                        <div class="notif-header">Notifications</div>
+                        <div class="notif-list" id="notifList"></div>
+                    </div>
+                </div>
+                <div class="header-profile-wrapper">
+                    <div class="header-profile" id="profileToggle" data-tooltip="Account & settings">
+                        <img id="headerProfileImg"
+                            src="https://ui-avatars.com/api/?name=Admin&background=1a237e&color=fff&rounded=true&size=36"
+                            alt="Admin" class="profile-img">
+                        <span class="profile-name" id="headerProfileName">Admin</span>
+                        <i class="fas fa-chevron-down" style="color:rgba(255,255,255,0.6);font-size:0.65rem"></i>
+                    </div>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <div class="profile-dropdown-header">
+                            <div class="profile-dd-name" id="profileDDName">Admin</div>
+                            <div class="profile-dd-role" id="profileDDRole">Super Admin</div>
+                        </div>
+                        <a class="profile-dd-item" onclick="App.showToast('Profile settings coming soon','info')">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                        <a class="profile-dd-item" onclick="App.showToast('System settings coming soon','info')">
+                            <i class="fas fa-gear"></i> Settings
+                        </a>
+                        <a class="profile-dd-item" onclick="App.showToast('Change password coming soon','info')">
+                            <i class="fas fa-key"></i> Change Password
+                        </a>
+                        <div class="profile-dd-divider"></div>
+                        <a class="profile-dd-item profile-dd-logout" onclick="App.logout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main class="page-content" id="pageContent"></main>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-container" id="modalContainer"></div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Undo Snackbar Container -->
+    <div class="undo-container" id="undoContainer"></div>
+
+    <!-- Service Layer -->
+    <script src="services/api.js"></script>
+    <script src="services/authService.js"></script>
+    <script src="services/templeContextService.js"></script>
+    <script src="services/templeManagementService.js"></script>
+    <script src="services/devoteeService.js"></script>
+    <script src="services/poojaService.js"></script>
+    <script src="services/bookingService.js"></script>
+    <script src="services/donationService.js"></script>
+    <script src="services/templeService.js"></script>
+    <script src="services/templePortalService.js"></script>
+
+    <!-- Devotee Portal Constants -->
+    <script>
+        window.NAKSHATRAS = [
+            'Ashwini', 'Bharani', 'Krittika', 'Rohini', 'Mrigashirsha',
+            'Ardra', 'Punarvasu', 'Pushya', 'Ashlesha', 'Magha',
+            'Purva Phalguni', 'Uttara Phalguni', 'Hasta', 'Chitra', 'Swati',
+            'Vishakha', 'Anuradha', 'Jyeshtha', 'Mula', 'Purva Ashadha',
+            'Uttara Ashadha', 'Shravana', 'Dhanishta', 'Shatabhisha',
+            'Purva Bhadrapada', 'Uttara Bhadrapada', 'Revati'
+        ];
+    </script>
+
+    <!-- Auth Gate — redirect to login if not authenticated -->
+    <script>
+        if (!isAuthenticated() || isTokenExpired()) {
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <!-- Module Scripts -->
+    <script src="modules/dashboard.js"></script>
+    <script src="modules/archana.js"></script>
+    <script src="modules/hall-booking.js"></script>
+    <script src="modules/offerings.js"></script>
+    <script src="modules/accounting.js"></script>
+    <script src="modules/hr-payroll.js"></script>
+    <script src="modules/inventory.js"></script>
+    <script src="modules/store.js"></script>
+    <script src="modules/communication.js"></script>
+    <script src="modules/nss-karayogam.js"></script>
+    <script src="modules/activity-logs.js"></script>
+    <script src="modules/workflows.js"></script>
+    <script src="modules/super-admin.js"></script>
+    <script src="modules/temples.js"></script>
+    <script src="modules/temple-selector.js"></script>
+    <script src="modules/translations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

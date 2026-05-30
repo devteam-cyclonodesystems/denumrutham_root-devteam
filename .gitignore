@@ -1,0 +1,52 @@
+# Prerequisites
+*.log
+*.pyc
+*.pyo
+*.pyd
+.db
+.DS_Store
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python Cache
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Node/Vite Build Cache & Dependencies
+node_modules/
+dist/
+.next/
+build/
+.svelte-kit/
+.vitepress/dist
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Application specific files
+brain/
+*access.log
+*app.json.log
+*error.log
+temp/
+tmp/
+*.txt.bak
+*.py.bak

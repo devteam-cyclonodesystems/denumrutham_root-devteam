@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — Denumrutham Temple Management</title>
+    <meta name="description" content="Secure login for Denumrutham Temple Management System.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Ambient glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -40%;
+            left: -20%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(255, 183, 77, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            right: -10%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(100, 181, 246, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 36px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: cardSlideUp 0.6s ease-out;
+        }
+
+        @keyframes cardSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .login-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #ffb74d, #ff8a65);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(255, 183, 77, 0.3);
+        }
+
+        .login-header h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: -0.02em;
+        }
+
+        .login-header p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-input:focus {
+            border-color: #ffb74d;
+            box-shadow: 0 0 0 3px rgba(255, 183, 77, 0.15);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .password-toggle:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #ffb74d, #ff8a65);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 183, 77, 0.35);
+        }
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-login .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        .btn-login.loading .spinner {
+            display: inline-block;
+        }
+
+        .btn-login.loading .btn-text {
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            background: rgba(244, 67, 54, 0.15);
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            color: #ef9a9a;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .error-message.show {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .om-text {
+            font-size: 0.85rem;
+            color: rgba(255, 183, 77, 0.5);
+            margin-bottom: 6px;
+        }
+
+        /* Tab Switcher */
+        .login-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .login-tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.04);
+            color: rgba(255, 255, 255, 0.5);
+            border: none;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+        .login-tab.active {
+            background: linear-gradient(135deg, rgba(255, 183, 77, 0.2), rgba(255, 138, 101, 0.2));
+            color: #ffb74d;
+        }
+        .login-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-icon">
+                    <i class="fas fa-gopuram"></i>
+                </div>
+                <h1>Denumrutham</h1>
+                <p>Temple Management System</p>
+            </div>
+
+            <!-- Tab Switcher -->
+            <div class="login-tabs">
+                <button class="login-tab active" id="tabLogin" onclick="switchTab('login')">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+                <button class="login-tab" id="tabRegister" onclick="switchTab('register')">
+                    <i class="fas fa-user-plus"></i> Register
+                </button>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="errorText">Invalid credentials</span>
+            </div>
+
+            <!-- Login Panel -->
+            <div class="tab-panel active" id="panelLogin">
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="loginUserId">USER ID</label>
+                        <input type="text" class="form-input" id="loginUserId" placeholder="manager@temple or phone number" required
+                            autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-input" id="loginPassword" placeholder="Enter your password"
+                                required autocomplete="current-password">
+                            <button type="button" class="password-toggle" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-login" id="loginBtn">
+                        <span class="btn-text"><i class="fas fa-sign-in-alt"></i> Sign In</span>
+                        <span class="spinner"></span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Register Panel -->
+            <div class="tab-panel" id="panelRegister">
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" id="regName" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-input" id="regPhone" placeholder="Enter mobile number" required
+                            pattern="[0-9]{10}" title="Enter 10-digit mobile number">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-input" id="regPassword" placeholder="Create a password"
+                                required minlength="6">
+                            <button type="button" class="password-toggle" onclick="toggleRegPassword()">
+                                <i class="fas fa-eye" id="regToggleIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-login" id="registerBtn">
+                        <span class="btn-text"><i class="fas fa-user-plus"></i> Create Account</span>
+                        <span class="spinner"></span>
+                    </button>
+                </form>
+            </div>
+
+            <div class="login-footer">
+                <div class="om-text">ॐ</div>
+                <div>Secure Access • Temple Management</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Layer (minimal for login) -->
+    <script src="services/api.js"></script>
+    <script src="services/authService.js"></script>
+    <script src="services/templePortalService.js"></script>
+
+    <script>
+        // If already authenticated, redirect to main app
+        if (isAuthenticated() && !isTokenExpired()) {
+            const payload = parseJwt(getToken());
+            if (payload && payload.role === 'DEVOTEE') {
+                window.location.href = 'index.html#temples';
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        function switchTab(tab) {
+            document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+            document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+            document.getElementById('panelLogin').classList.toggle('active', tab === 'login');
+            document.getElementById('panelRegister').classList.toggle('active', tab === 'register');
+            hideError();
+        }
+
+        function togglePassword() {
+            const input = document.getElementById('loginPassword');
+            const icon = document.getElementById('toggleIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        function toggleRegPassword() {
+            const input = document.getElementById('regPassword');
+            const icon = document.getElementById('regToggleIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+
+        function showError(message) {
+            const el = document.getElementById('errorMessage');
+            document.getElementById('errorText').textContent = message;
+            el.classList.add('show');
+        }
+
+        function hideError() {
+            document.getElementById('errorMessage').classList.remove('show');
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            hideError();
+
+            const btn = document.getElementById('loginBtn');
+            const userId = document.getElementById('loginUserId').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!userId || !password) {
+                showError('Please enter both User ID and password.');
+                return;
+            }
+
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            try {
+                await AuthService.login(userId, password);
+                // Check role to redirect correctly
+                const payload = parseJwt(getToken());
+                if (payload && payload.role === 'DEVOTEE') {
+                    window.location.href = 'index.html#temples';
+                } else {
+                    window.location.href = 'index.html';
+                }
+            } catch (error) {
+                console.error('[Login] Error:', error);
+                showError(error.message || 'Login failed. Please check your credentials.');
+            } finally {
+                btn.classList.remove('loading');
+                btn.disabled = false;
+            }
+        }
+
+        async function handleRegister(e) {
+            e.preventDefault();
+            hideError();
+
+            const btn = document.getElementById('registerBtn');
+            const name = document.getElementById('regName').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const password = document.getElementById('regPassword').value;
+
+            if (!name || !phone || !password) {
+                showError('Please fill all fields.');
+                return;
+            }
+
+            if (password.length < 6) {
+                showError('Password must be at least 6 characters.');
+                return;
+            }
+
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            try {
+                const result = await TemplePortalService.registerDevotee(phone, password, name);
+                if (result && result.access_token) {
+                    setToken(result.access_token);
+                    const userInfo = parseJwt(result.access_token);
+                    if (userInfo) {
+                        localStorage.setItem('user_info', JSON.stringify({
+                            id: userInfo.sub,
+                            role: userInfo.role,
+                            username: userInfo.username,
+                        }));
+                    }
+                    window.location.href = 'index.html#temples';
+                }
+            } catch (error) {
+                console.error('[Register] Error:', error);
+                showError(error.message || 'Registration failed. Please try again.');
+            } finally {
+                btn.classList.remove('loading');
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>
