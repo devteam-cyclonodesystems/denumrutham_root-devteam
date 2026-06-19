@@ -75,3 +75,20 @@ All endpoints enforce multi-tenant isolation validation check checks.
 * **Mantra Chanting Preview Card**:
   * Extracted video ID from YouTube/YouTube Music URLs.
   * Controls playback (play, pause, mute, unmute) via an iframe API message passing model (`postMessage`).
+
+---
+
+## 4. Sprint 4 — Transactional Alignment & Preview Refinements
+
+### Option A Transaction Handling
+* **Platform Standard Transaction Wrapper**: Removed explicit transaction starting (`db.begin()`) or checks (`db.in_transaction()`) inside `TempleProfileService`. Mutating methods run directly on the session and commit explicitly, with exceptions caught, rolled back via `await db.rollback()`, and bubbled up.
+* **Audit Serialization**: Implemented `make_serializable` inside `TempleProfileService.approve_draft` and `direct_update_profile` to convert UUID and datetime fields to string format, preventing JSONB database serialization errors.
+
+### Context Propagation & Curation Refactoring
+* **Race-Free Mount Hooks**: Changed sub-resource tabs (`AnnouncementsTab`, `ActivitiesTab`, `GalleryTab`, `FestivalSettings`, `KeyPersonnelTab`) to extract route `templeId` synchronously from Router params via `useParams()` and pass it to store fetch actions.
+* **X-Temple-ID Header Injection**: Augmented `digitalExperienceService` API methods to accept optional `templeId` parameters, injecting the `X-Temple-ID` header only if specified. This guarantees that manager flows continue to resolve context via token/JWT while curator flows correctly resolve context via the custom header.
+* **Real-time Live Preview Sync**: Removed duplicate local `useState` hooks inside `AboutTab.tsx`. Bind textareas directly to the Zustand store's `profile` state to sync manager keystrokes with the preview iframe in real-time.
+
+### Defensive Rendering & Hardening
+* **Hiding Empty Sections**: Applied `.trim()` checks to `TemplePublicPortal.tsx`, `TempleDetail.tsx`, and `PortalWebsitePreview.tsx` to automatically hide the History section if it is empty, null, or contains whitespace only.
+* **Stable Announcement Sorting**: Hardened sorting logic in `PortalAnnouncementTickerPreview.tsx` to handle missing/null `created_at` timestamps using safe fallback comparison values.
