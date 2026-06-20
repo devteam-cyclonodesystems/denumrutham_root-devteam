@@ -128,3 +128,8 @@ All endpoints enforce multi-tenant isolation validation check checks.
 * **getMediaUrl Hooking**: Resolved the relative `/static/uploads/...` database audio paths using the `getMediaUrl` helper in `PortalHeroPreview.tsx` to ensure correct development server asset loading.
 * **YouTube script suspension bypass**: Replaced `className="hidden"` (which suspends iframe script execution in modern browsers) with `className="absolute opacity-0 pointer-events-none"` to keep the hidden YouTube player active, allowing autoplay and loop command passing.
 
+### Marquee Overflow & Empty Wrapper Fixes
+* **Infinite Scrolling on Short Lists**: Modified `PortalKeyPersonnelPreview.tsx` and `PortalGalleryPreview.tsx` to automatically repeat small arrays (e.g. lists containing only 1 or 2 items) up to a minimum size (15 items) and duplicate them. This guarantees the list overflows the container width, so it always displays a scrollbar and always auto-slides seamlessly.
+* **Empty Section Spacer Prevention**: Updated the rendering loops in `TemplePublicPortal.tsx` and `PortalWebsitePreview.tsx` to evaluate the content of a section first. If the content evaluates to `null` (e.g., `mantras` which returns `null` or empty `key_personnel`), the wrapping container `div` is not rendered, eliminating empty spacers caused by `space-y-2` layout classes.
+* **Compact Footer Style**: Updated `PortalContactPreview.tsx` to evaluate if any contact coordinates or social links are configured. If they are empty, it renders a simplified, compact copyright bar without the empty upper block and the thin divider border.
+
