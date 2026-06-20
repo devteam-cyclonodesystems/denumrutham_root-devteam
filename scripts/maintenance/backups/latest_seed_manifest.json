@@ -1,0 +1,15 @@
+{
+  "dataset_version": "1.0.0",
+  "seeded_at": "2026-06-14T11:12:24.226771+00:00",
+  "execution_duration_seconds": 132.41,
+  "git_commit_hash": "aa4271266c0e2a7b6548709279e4aa9cb4b71c86",
+  "temples": 6,
+  "suggestions": 3,
+  "claims": 2,
+  "bookings": 2,
+  "offerings": 1,
+  "notifications": 1,
+  "followers": 1,
+  "media_files_deleted": 0,
+  "status": "SUCCESS"
+}

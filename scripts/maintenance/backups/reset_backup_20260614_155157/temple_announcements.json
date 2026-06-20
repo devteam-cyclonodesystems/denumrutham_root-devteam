@@ -1,0 +1,62 @@
+[
+  {
+    "id": "e2e45896-fec7-4d23-9f47-5aa52508b5b4",
+    "temple_id": "ba1cd447-5d08-4a76-b2d0-30511c9b16d1",
+    "title": "Solar Eclipse Darshan Hours",
+    "content": "Special deeparadhana schedules during upcoming eclipse phase.",
+    "is_active": true,
+    "is_pinned": true,
+    "priority": 1,
+    "display_order": 0,
+    "start_date": null,
+    "expiry_date": null,
+    "created_at": "2026-06-04T07:04:04.125710+00:00",
+    "updated_at": "2026-06-04T07:04:04.125715+00:00",
+    "created_by": "790669f3-c240-4d23-bd99-b8f6ddfd7194"
+  },
+  {
+    "id": "23f54524-2b51-40bf-9240-34a22111b700",
+    "temple_id": "ba1cd447-5d08-4a76-b2d0-30511c9b16d1",
+    "title": "Solar Eclipse Darshan Hours",
+    "content": "Special deeparadhana schedules during upcoming eclipse phase.",
+    "is_active": true,
+    "is_pinned": true,
+    "priority": 1,
+    "display_order": 0,
+    "start_date": null,
+    "expiry_date": null,
+    "created_at": "2026-06-04T07:04:33.616697+00:00",
+    "updated_at": "2026-06-04T07:04:33.616703+00:00",
+    "created_by": "790669f3-c240-4d23-bd99-b8f6ddfd7194"
+  },
+  {
+    "id": "8e33090e-c51f-4b0c-bd9a-9c88a0ba13f3",
+    "temple_id": "ba1cd447-5d08-4a76-b2d0-30511c9b16d1",
+    "title": "Solar Eclipse Darshan Hours",
+    "content": "Special deeparadhana schedules during upcoming eclipse phase.",
+    "is_active": true,
+    "is_pinned": true,
+    "priority": 1,
+    "display_order": 0,
+    "start_date": null,
+    "expiry_date": null,
+    "created_at": "2026-06-04T07:04:52.357131+00:00",
+    "updated_at": "2026-06-04T07:04:52.357135+00:00",
+    "created_by": "790669f3-c240-4d23-bd99-b8f6ddfd7194"
+  },
+  {
+    "id": "27f0d505-f68d-4f9e-9004-e3e256ba162d",
+    "temple_id": "f96f45a1-d3a3-422f-9260-abfcd8df1aaa",
+    "title": "Announcement Ticker",
+    "content": "Announcement Ticker",
+    "is_active": true,
+    "is_pinned": false,
+    "priority": 0,
+    "display_order": 1,
+    "start_date": "2026-06-10T05:32:00+00:00",
+    "expiry_date": "2027-06-10T05:32:00+00:00",
+    "created_at": "2026-06-10T05:33:00.562506+00:00",
+    "updated_at": "2026-06-10T05:33:00.562511+00:00",
+    "created_by": "2c1af2b6-ca04-4b5f-bf44-81a6877c1bf4"
+  }
+]

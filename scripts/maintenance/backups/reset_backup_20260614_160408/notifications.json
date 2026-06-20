@@ -1,0 +1,232 @@
+[
+  {
+    "id": "722f38c7-1265-418b-9bc1-aff2f90109a9",
+    "temple_id": "f96f45a1-d3a3-422f-9260-abfcd8df1aaa",
+    "user_id": "2c1af2b6-ca04-4b5f-bf44-81a6877c1bf4",
+    "role": null,
+    "title": "Temple Registration Approved",
+    "message": "Your temple 'Malottu Sree Bhadrakali Temple' has been approved. You can now log in.",
+    "is_read": false,
+    "created_at": "2026-05-28T17:13:23.606063+00:00"
+  },
+  {
+    "id": "1eac007c-06c0-4631-8aa8-e8611874a5bb",
+    "temple_id": "ba1cd447-5d08-4a76-b2d0-30511c9b16d1",
+    "user_id": "790669f3-c240-4d23-bd99-b8f6ddfd7194",
+    "role": null,
+    "title": "Temple Registration Approved",
+    "message": "Your temple 'Automated Test Temple 963' has been approved. You can now log in.",
+    "is_read": false,
+    "created_at": "2026-05-28T17:19:34.099057+00:00"
+  },
+  {
+    "id": "3f126d1c-d5da-487c-9ba7-6ebd5beb5f92",
+    "temple_id": "ba1cd447-5d08-4a76-b2d0-30511c9b16d1",
+    "user_id": null,
+    "role": "SUPERADMIN",
+    "title": "Temple Status Updated",
+    "message": "Temple status changed from PENDING to APPROVED",
+    "is_read": false,
+    "created_at": "2026-05-28T17:19:34.125454+00:00"
+  },
+  {
+    "id": "05d30a4b-2951-48c3-bfe6-273335c09ae1",
+    "temple_id": "ba1cd447-5d08-4a76-b2d0-30511c9b16d1",
+    "user_id": null,
+    "role": "SUPERADMIN",
+    "title": "New Temple Created",
+    "message": "New temple 'Automated Test Temple 963' has been created",
+    "is_read": false,
+    "created_at": "2026-05-28T17:19:34.125133+00:00"
+  },
+  {
+    "id": "ebb6030f-52f2-472a-a575-c0f0db700a5c",
+    "temple_id": "ba1cd447-5d08-4a76-b2d0-30511c9b16d1",
+    "user_id": null,
+    "role": "TEMPLE_ADMIN",
+    "title": "Temple Approved",
+    "message": "Your temple registration has been approved",
+    "is_read": false,
+    "created_at": "2026-05-28T17:19:34.161820+00:00"
+  },
+  {
+    "id": "2a701362-0f02-4740-8dad-02b035c91b0d",
+    "temple_id": "7788f614-fc32-40c7-82f6-1914959b2d10",
+    "user_id": "b51c60c8-ee37-4d07-8878-5ab48c4ace56",
+    "role": null,
+    "title": "Temple Registration Approved",
+    "message": "Your temple 'Temple Test 1' has been approved. You can now log in.",
+    "is_read": false,
+    "created_at": "2026-06-01T10:44:32.698396+00:00"
+  },
+  {
+    "id": "420d6d91-3b34-449d-ad25-91294d2d401d",
+    "temple_id": "7788f614-fc32-40c7-82f6-1914959b2d10",
+    "user_id": null,
+    "role": "SUPERADMIN",
+    "title": "New Temple Created",
+    "message": "New temple 'Temple Test 1' has been created",
+    "is_read": false,
+    "created_at": "2026-06-01T10:44:32.720634+00:00"
+  },
+  {
+    "id": "85524519-8c2d-4c84-9fa4-c5e6ba070b55",
+    "temple_id": "7788f614-fc32-40c7-82f6-1914959b2d10",
+    "user_id": null,
+    "role": "SUPERADMIN",
+    "title": "Temple Status Updated",
+    "message": "Temple status changed from PENDING to APPROVED",
+    "is_read": false,
+    "created_at": "2026-06-01T10:44:32.727925+00:00"
+  },
+  {
+    "id": "eae02003-3745-4b25-b50d-470a037bc544",
+    "temple_id": "7788f614-fc32-40c7-82f6-1914959b2d10",
+    "user_id": null,
+    "role": "TEMPLE_ADMIN",
+    "title": "Temple Approved",
+    "message": "Your temple registration has been approved",
+    "is_read": false,
+    "created_at": "2026-06-01T10:44:32.727651+00:00"
+  },
+  {
+    "id": "c4314608-f4bc-430d-ab72-a3977ffc74e1",
+    "temple_id": "4c9dd033-5d22-4593-8c45-0735f83e21b4",
+    "user_id": "27288dc3-b2dd-4fb9-afdb-d0d5dd776e6e",
+    "role": null,
+    "title": "Temple Registration Approved",
+    "message": "Your temple 'Temple Test 2' has been approved. You can now log in.",
+    "is_read": false,
+    "created_at": "2026-06-01T10:48:25.863694+00:00"
+  },
+  {
+    "id": "b98c9b43-2eee-47ed-86d4-bbfe4745c929",
+    "temple_id": "4c9dd033-5d22-4593-8c45-0735f83e21b4",
+    "user_id": null,
+    "role": "TEMPLE_ADMIN",
+    "title": "Temple Approved",
+    "message": "Your temple registration has been approved",
+    "is_read": false,
+    "created_at": "2026-06-01T10:48:26.041742+00:00"
+  },
+  {
+    "id": "8ff314fb-8bd9-41f5-a8ae-deb9c0512a02",
+    "temple_id": "4c9dd033-5d22-4593-8c45-0735f83e21b4",
+    "user_id": null,
+    "role": "SUPERADMIN",
+    "title": "New Temple Created",
+    "message": "New temple 'Temple Test 2' has been created",
+    "is_read": false,
+    "created_at": "2026-06-01T10:48:26.042625+00:00"
+  },
+  {
+    "id": "8a324194-1dff-4a6f-8183-668cb9d78d2d",
+    "temple_id": "4c9dd033-5d22-4593-8c45-0735f83e21b4",
+    "user_id": null,
+    "role": "SUPERADMIN",
+    "title": "Temple Status Updated",
+    "message": "Temple status changed from PENDING to APPROVED",
+    "is_read": false,
+    "created_at": "2026-06-01T10:48:26.048075+00:00"
+  },
+  {
+    "id": "e51222d7-909a-451b-b074-dbaf530d853f",
+    "temple_id": "ca37572b-84e7-4ff1-b01d-8729c246c0fa",
+    "user_id": "0ca4d150-7b86-4c3d-b319-9b7dca71f1ff",
+    "role": null,
+    "title": "Temple Suggestion Submitted",
+    "message": "We have received your temple suggestion for 'Kaithottukonam Mahadeva Temple Test'. Reference number: TS-2026-KL-000001",
+    "is_read": false,
+    "created_at": "2026-06-13T04:55:49.927408+00:00"
+  },
+  {
+    "id": "b8beeed1-a6cc-4c46-906e-7c54c00ae642",
+    "temple_id": "ca37572b-84e7-4ff1-b01d-8729c246c0fa",
+    "user_id": "0ca4d150-7b86-4c3d-b319-9b7dca71f1ff",
+    "role": null,
+    "title": "Temple Suggestion Submitted",
+    "message": "We have received your temple suggestion for 'Kaithottukonam Mahadeva Temple Test'. Reference number: TS-2026-KL-000001",
+    "is_read": false,
+    "created_at": "2026-06-13T04:58:36.512041+00:00"
+  },
+  {
+    "id": "dd0d2d55-0f94-4fb0-b88a-79c0841c07c7",
+    "temple_id": "ca37572b-84e7-4ff1-b01d-8729c246c0fa",
+    "user_id": "8b79c8d0-adb2-4014-be12-ceef12f2d901",
+    "role": null,
+    "title": "Temple Suggestion Submitted",
+    "message": "We have received your temple suggestion for 'Kaithottukonam Mahadeva Temple Test'. Reference number: TS-2026-KL-000001",
+    "is_read": false,
+    "created_at": "2026-06-13T05:23:29.870075+00:00"
+  },
+  {
+    "id": "dcf1cf23-fefc-4335-b13f-f7b1f9ef5b73",
+    "temple_id": "ca37572b-84e7-4ff1-b01d-8729c246c0fa",
+    "user_id": "8b79c8d0-adb2-4014-be12-ceef12f2d901",
+    "role": null,
+    "title": "Temple Suggestion Submitted",
+    "message": "We have received your temple suggestion for 'Kaithottukonam Mahadeva Temple Test'. Reference number: TS-2026-KL-000001",
+    "is_read": false,
+    "created_at": "2026-06-13T05:35:40.402432+00:00"
+  },
+  {
+    "id": "3589250e-49ee-4ca9-b63c-1995f31c9690",
+    "temple_id": "ca37572b-84e7-4ff1-b01d-8729c246c0fa",
+    "user_id": "8b79c8d0-adb2-4014-be12-ceef12f2d901",
+    "role": null,
+    "title": "Temple Suggestion Submitted",
+    "message": "We have received your temple suggestion for 'Live Test Temple Suggestion'. Reference number: TS-2026-KL-000001",
+    "is_read": false,
+    "created_at": "2026-06-13T05:36:54.476894+00:00"
+  },
+  {
+    "id": "6e67b0da-0e9a-4935-9341-293b8a5c618a",
+    "temple_id": "ca37572b-84e7-4ff1-b01d-8729c246c0fa",
+    "user_id": "8b79c8d0-adb2-4014-be12-ceef12f2d901",
+    "role": null,
+    "title": "Temple Suggestion Submitted",
+    "message": "We have received your temple suggestion for 'Live Test Temple Suggestion'. Reference number: TS-2026-KL-000002",
+    "is_read": false,
+    "created_at": "2026-06-13T05:37:05.713614+00:00"
+  },
+  {
+    "id": "7ce4bbb2-8fc5-449b-8255-58d1d2b16df1",
+    "temple_id": "ca37572b-84e7-4ff1-b01d-8729c246c0fa",
+    "user_id": "9851d702-8ded-4daa-8b64-4bb7e19629de",
+    "role": null,
+    "title": "Temple Suggestion Submitted",
+    "message": "We have received your temple suggestion for 'Kaithottukonam Mahadeva Temple'. Reference number: TS-2026-KL-000001",
+    "is_read": false,
+    "created_at": "2026-06-13T05:37:59.032942+00:00"
+  },
+  {
+    "id": "781f1c66-c6c6-4b41-99e3-1d2ab28dda77",
+    "temple_id": "ca37572b-84e7-4ff1-b01d-8729c246c0fa",
+    "user_id": "8b79c8d0-adb2-4014-be12-ceef12f2d901",
+    "role": null,
+    "title": "Temple Suggestion Submitted",
+    "message": "We have received your temple suggestion for 'Live Test Approval A'. Reference number: TS-2026-KL-000002",
+    "is_read": false,
+    "created_at": "2026-06-13T05:47:32.294935+00:00"
+  },
+  {
+    "id": "bc4fc5e8-5df7-499d-8697-d4f3cf9c9877",
+    "temple_id": "ca37572b-84e7-4ff1-b01d-8729c246c0fa",
+    "user_id": "8b79c8d0-adb2-4014-be12-ceef12f2d901",
+    "role": null,
+    "title": "Temple Suggestion Submitted",
+    "message": "We have received your temple suggestion for 'Live Test Approval B'. Reference number: TS-2026-KL-000003",
+    "is_read": false,
+    "created_at": "2026-06-13T05:47:33.987798+00:00"
+  },
+  {
+    "id": "43d1860b-5f81-4c2a-ad09-513f2087c410",
+    "temple_id": "e8286bfe-a934-4e81-8cd9-d4801f9c4f49",
+    "user_id": "9851d702-8ded-4daa-8b64-4bb7e19629de",
+    "role": null,
+    "title": "Temple Suggestion Approved",
+    "message": "Congratulations! Your temple suggestion 'Kaithottukonam Mahadeva Temple' was approved and added to the directory.",
+    "is_read": false,
+    "created_at": "2026-06-13T05:58:20.163086+00:00"
+  }
+]

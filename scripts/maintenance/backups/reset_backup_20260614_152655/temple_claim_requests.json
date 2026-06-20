@@ -1,0 +1,20 @@
+[
+  {
+    "id": "74545422-f5c9-4aae-b832-6471d69d8c85",
+    "temple_id": "f96f45a1-d3a3-422f-9260-abfcd8df1aaa",
+    "claimant_id": "2c1af2b6-ca04-4b5f-bf44-81a6877c1bf4",
+    "status": "PENDING",
+    "proof_urls": [
+      "/static/uploads/8d9331826e4343a4b02c2d17c233a4ee.pdf"
+    ],
+    "target_management_mode": "GOVERNED",
+    "target_subscription_plan": "GOVERNED_PREMIUM",
+    "trial_duration_days": 30,
+    "claimant_notes": "Testing with Manager",
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "rejection_reason": null,
+    "created_at": "2026-06-12T07:46:18.680461+00:00",
+    "updated_at": "2026-06-12T07:46:18.680464+00:00"
+  }
+]
