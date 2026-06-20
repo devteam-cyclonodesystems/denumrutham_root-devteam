@@ -133,3 +133,6 @@ All endpoints enforce multi-tenant isolation validation check checks.
 * **Empty Section Spacer Prevention**: Updated the rendering loops in `TemplePublicPortal.tsx` and `PortalWebsitePreview.tsx` to evaluate the content of a section first. If the content evaluates to `null` (e.g., `mantras` which returns `null` or empty `key_personnel`), the wrapping container `div` is not rendered, eliminating empty spacers caused by `space-y-2` layout classes.
 * **Compact Footer Style**: Updated `PortalContactPreview.tsx` to evaluate if any contact coordinates or social links are configured. If they are empty, it renders a simplified, compact copyright bar without the empty upper block and the thin divider border.
 
+### Follower Preferences Save Failure
+* **Import Scope Resolution**: Resolved a `NameError` in the backend follow preferences router `follow.py` where `select` from `sqlalchemy` and the `TempleFollower` model were referenced but never imported. Moved all model imports (`TempleFollower`, `TempleFollowerPreference`) and `select` to the top of the route file to ensure both GET and PUT preference coordinates successfully execute.
+
