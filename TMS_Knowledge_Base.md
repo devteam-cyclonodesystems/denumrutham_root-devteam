@@ -137,5 +137,22 @@ All endpoints enforce multi-tenant isolation validation check checks.
 * **Import Scope Resolution**: Resolved a `NameError` in the backend follow preferences router `follow.py` where `select` from `sqlalchemy` and the `TempleFollower` model were referenced but never imported. Moved all model imports (`TempleFollower`, `TempleFollowerPreference`) and `select` to the top of the route file to ensure both GET and PUT preference coordinates successfully execute.
 
 ### Hero Banner Button Responsiveness
-* **CTA Button Spacing & Wrapping**: Updated `PortalHeroPreview.tsx` to handle narrower viewport widths. Reduced the horizontal padding and gap values dynamically (`px-3.5 md:px-5`, `gap-2 md:gap-3` for split layout; and `px-4 md:px-8`, `gap-2.5 md:gap-4` for centered layout) and added `whitespace-nowrap shrink-0` to the CTA buttons. This prevents the "Hall Booking" button from wrapping to a second line prematurely on medium or split desktop/tablet displays.
+* **Hero Banner Button Responsiveness**: Updated `PortalHeroPreview.tsx` to handle narrower viewport widths. Reduced the horizontal padding and gap values dynamically (`px-3.5 md:px-5`, `gap-2 md:gap-3` for split layout; and `px-4 md:px-8`, `gap-2.5 md:gap-4` for centered layout) and added `whitespace-nowrap shrink-0` to the CTA buttons. This prevents the "Hall Booking" button from wrapping to a second line prematurely on medium or split desktop/tablet displays.
 
+---
+
+## 7. Sprint 7 — Temple Directory and Homepage Fixes
+
+### Database Purge & Updates
+* **Test Temples Deleted**: Permanently deleted both `Test Temple Curation` and `System Platform Placeholder` from the database. Cleaned up all database references (including `audit_logs` and `temple_suggestions`).
+* **Malottu Sree Bhadrakali Temple**: Deactivated from public directories (`directory_status = 'INACTIVE'`), removed from featured status (`is_featured = false`), and linked to the Kerala/Thiruvananthapuram master location IDs.
+* **Location Text Synchronization**: Updated empty `state` and `district` columns in the `temples` and `temple_profiles` tables using their corresponding `state_master` and `district_master` names.
+
+### Backend Approval Logic
+* **Default Directory Status**: Modified the `Temple` SQLAlchemy model in `temple_models.py` to default the `directory_status` column to `"INACTIVE"`.
+* **Superadmin Approval Flow**: Updated `RegistrationService.approve_temple` in `registration_service.py` to explicitly set `directory_status = "INACTIVE"` upon onboarding approval, preventing automatic publication.
+
+### Devotee & Admin Portals
+* **National Temple Directory**: Added a new route `/directory` in the devotee portal routing to `TempleSearchResults.tsx` to display all active/approved temples in a searchable/filterable list. Fixes the Hero banner "Temple Directory" button and breadcrumbs to navigate directly to it.
+* **Featured Card Navigation**: Updated devotee portal `TempleCarousel.tsx` to wrap Featured Temple cards in a link block to `/portal` and remove "Claim" and "Visit" buttons.
+* **Dynamic Location Labels**: Replaced direct template string concatenations with filtered dynamic joiners across devotee carousels, search results, and admin directory views to display proper locations without formatting anomalies.
