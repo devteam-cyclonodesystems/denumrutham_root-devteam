@@ -92,3 +92,39 @@ All endpoints enforce multi-tenant isolation validation check checks.
 ### Defensive Rendering & Hardening
 * **Hiding Empty Sections**: Applied `.trim()` checks to `TemplePublicPortal.tsx`, `TempleDetail.tsx`, and `PortalWebsitePreview.tsx` to automatically hide the History section if it is empty, null, or contains whitespace only.
 * **Stable Announcement Sorting**: Hardened sorting logic in `PortalAnnouncementTickerPreview.tsx` to handle missing/null `created_at` timestamps using safe fallback comparison values.
+
+---
+
+## 5. Sprint 5 — Key Personnel & Devotional Chant Speaker
+
+### Key Personnel Layout Synchronization
+* **Automatic Injection & Fallbacks**: Integrated `key_personnel` into the default fallback `section_order` and website settings labels list. Set up an automatic injection rule inside the settings component to mount Key Personnel right before the Contact section. Enabled Key Personnel rendering within the Manager's live portal preview.
+
+### Devotional Chant Speaker Redesign
+* **Speaker Control Integration**: Replaced the standalone mantras section with a dedicated Speaker button next to the Follow button in the Hero Banner, adapting to both split and full-screen layouts.
+* **Autoplay & Loop**: Implemented a 10-second autoplay delay and loop playback for the devotee portal chant.
+* **Backend Serialization**: hard-coded explicit `feature_visibility` dictionary serialization in the `/bootstrap` endpoint inside `public_portal.py` to prevent frontend configuration schema parse failures.
+
+---
+
+## 6. Sprint 6 — Carousel Marquees, Lightbox Close, and Audio Playback Fixes
+
+### Footer Refinement
+* **Removed Redundant Header & Address**: Cleaned up `PortalContactPreview.tsx` to remove the duplicate temple name header and location strings from the left column of the public website footer, keeping only social links on the left side.
+
+### Horizontal Marquees
+* **React-Controlled Marquees**: Replaced CSS keyframe-based marquee animation with a React-controlled scroll loop container in both `PortalKeyPersonnelPreview.tsx` and `PortalGalleryPreview.tsx`.
+* **Native horizontal scrollbar**: Added native horizontal scrollbar styled as a thin orange bar (`spiritual-scrollbar`).
+* **Mouse drag-to-scroll & Hover Pause**: Enabled mouse drag-to-scroll gestures and touch swipe. Scrolling automatically pauses during mouse hover or active drag.
+* **Seamless Bidirectional Wrap**: Wrapped scroll positions dynamically at boundaries (`scrollLeft` resetting to half of the container's duplicated `scrollWidth`) to allow seamless infinite loops when scrolling forward or backward.
+* **Click-Drag Separation**: Implemented a drag movement threshold (`5px`) on the gallery marquee so dragging the carousel does not trigger the lightbox detail modal click.
+
+### Lightbox Overlay
+* **z-Index Elevation**: Raised the lightbox overlay container and action buttons to `z-[9999]` to ensure visual dominance.
+* **Backdrop Click Dismissal**: Added backdrop clicks to close the lightbox modal.
+* **Sleek Control Targets**: Styled Close and navigation buttons with enlarged clickable padding for improved mobile accessibility.
+
+### Audio Playback
+* **getMediaUrl Hooking**: Resolved the relative `/static/uploads/...` database audio paths using the `getMediaUrl` helper in `PortalHeroPreview.tsx` to ensure correct development server asset loading.
+* **YouTube script suspension bypass**: Replaced `className="hidden"` (which suspends iframe script execution in modern browsers) with `className="absolute opacity-0 pointer-events-none"` to keep the hidden YouTube player active, allowing autoplay and loop command passing.
+
