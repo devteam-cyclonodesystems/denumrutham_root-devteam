@@ -136,3 +136,6 @@ All endpoints enforce multi-tenant isolation validation check checks.
 ### Follower Preferences Save Failure
 * **Import Scope Resolution**: Resolved a `NameError` in the backend follow preferences router `follow.py` where `select` from `sqlalchemy` and the `TempleFollower` model were referenced but never imported. Moved all model imports (`TempleFollower`, `TempleFollowerPreference`) and `select` to the top of the route file to ensure both GET and PUT preference coordinates successfully execute.
 
+### Hero Banner Button Responsiveness
+* **CTA Button Spacing & Wrapping**: Updated `PortalHeroPreview.tsx` to handle narrower viewport widths. Reduced the horizontal padding and gap values dynamically (`px-3.5 md:px-5`, `gap-2 md:gap-3` for split layout; and `px-4 md:px-8`, `gap-2.5 md:gap-4` for centered layout) and added `whitespace-nowrap shrink-0` to the CTA buttons. This prevents the "Hall Booking" button from wrapping to a second line prematurely on medium or split desktop/tablet displays.
+
