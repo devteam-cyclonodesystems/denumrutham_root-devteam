@@ -156,3 +156,23 @@ All endpoints enforce multi-tenant isolation validation check checks.
 * **National Temple Directory**: Added a new route `/directory` in the devotee portal routing to `TempleSearchResults.tsx` to display all active/approved temples in a searchable/filterable list. Fixes the Hero banner "Temple Directory" button and breadcrumbs to navigate directly to it.
 * **Featured Card Navigation**: Updated devotee portal `TempleCarousel.tsx` to wrap Featured Temple cards in a link block to `/portal` and remove "Claim" and "Visit" buttons.
 * **Dynamic Location Labels**: Replaced direct template string concatenations with filtered dynamic joiners across devotee carousels, search results, and admin directory views to display proper locations without formatting anomalies.
+
+---
+
+## 8. Sprint 8 — Store Commerce, Website Builder, and Directory Status Hardening
+
+### Store & Auctions
+* **Auction Stock Concurrency**: Modified `/bid` endpoint to prevent double-deducting physical stock on consecutive bids. Re-reserves expired reservation records securely using row-level locking.
+* **Low Stock Alerts Exclusion**: Excluded auction products from the frontend manager stock alerts lists and backend dashboard indicators to prevent misleading restock flags.
+* **Devotee Bidder Fields & Winner Settlement Defaults**: Auto-resolves claimant username sessions on bids, hides name input for devotees, and defaults the winner name field to the highest bidder on settlement.
+* **Typo Cleanup**: Purged duplicate typo product "Scandal" (0 stock) from the store database catalog.
+
+### Website Builder
+* **Visual Preview Loop Fix**: Handled empty gallery items gracefully in `PortalGalleryPreview.tsx` to prevent browser unresponsive infinite loops.
+* **Settings Card Optimization**: Removed redundant iframe preview frames and expanded the config panel to full-width in the visual settings tab.
+
+### Temple Directory & Claim Verification
+* **Directory Status Synchronization**: Hardened settings publication, unpublication, and superadmin approval endpoints to sync the temple's `directory_status` between `"ACTIVE"` and `"INACTIVE"`.
+* **Claim Status Badge Resolution**: Updated backend `resolve_claim_status` to return `"CLAIMED"` for `"GOVERNED"` temples so the devotee UI correctly renders verification badges instead of defaulting them back to `"Unclaimed"`.
+* **Hall Booking Photos**: Updated image configurations for Sree Bhadra Convention Center Balaramapuram to use the correct local asset paths.
+
