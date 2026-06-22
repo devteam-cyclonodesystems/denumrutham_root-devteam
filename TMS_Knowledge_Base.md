@@ -200,3 +200,15 @@ All endpoints enforce multi-tenant isolation validation check checks.
 * Created `PUT /api/v1/auth/me/credentials` endpoint in [auth.py](file:///C:/Denumrutham/backend/app/modules/auth/routes/auth.py) for secure credentials updates.
 * Created `GET /api/v1/devotee/notifications` endpoint in [devotee_bookings.py](file:///C:/Denumrutham/backend/app/modules/bookings/routes/devotee_bookings.py) to fetch relevant notifications.
 
+---
+
+## 10. Sprint 10 — Devotee Profile Persistence, Sync, and Usability Hardening
+
+### Devotee Profile Persistence
+* **On-the-Fly Profile Creation**: Hardened the backend profile GET and PUT endpoints in [devotee_booking_service.py](file:///C:/Denumrutham/backend/app/modules/bookings/services/devotee_booking_service.py) to automatically create a devotee profile record in the database if one does not exist for the logged-in user. This avoids 404 errors for legacy or seeded devotees without profile records.
+* **Name Synchronization**: Enabled automatic synchronization of the devotee's name from `DevoteeProfile` to the main `User` record in the database when the profile is updated, ensuring identity consistency across auth and profile contexts.
+
+### State Sync & User Experience
+* **Live Refresh Hook**: Added a live profile refresh trigger (`useAuthStore.getState().refreshProfile()`) in [DevoteeSettingsModals.tsx](file:///C:/Denumrutham/frontend/src/components/bookings/DevoteeSettingsModals.tsx) after saving both personal profile and account credentials, instantly updating the devotee's name display on the header button dropdown in the UI.
+* **Persistent Layout Integration**: Relocated the "Current Password (Required to Save)" input field in the account settings modal to the bottom of the form (outside activeTab conditional blocks). This makes the current password field always visible on both the Configure and Preview tabs, allowing devotees to double-check their changes on the preview tab and submit directly.
+
