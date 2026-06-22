@@ -187,12 +187,12 @@ All endpoints enforce multi-tenant isolation validation check checks.
 ### Nav Navigation & Header Integration
 * **Devotee Profile Dropdown & Notifications Bell**: Created a unified [DevoteeHeaderMenu](file:///C:/Denumrutham/frontend/src/components/bookings/DevoteeSettingsModals.tsx#L686-L833) navigation component and integrated it into [DenumruthamShell.tsx](file:///C:/Denumrutham/frontend/src/layouts/DenumruthamShell.tsx#L66-L80) and [MainLayout.tsx](file:///C:/Denumrutham/frontend/src/layouts/MainLayout.tsx#L52-L63).
 * Displays a **Bell Icon** (polling platform and followed temple notifications with inline mark-as-read triggers), a styled orange button showing the devotee's name that toggles a dropdown listing **Your Profile** and **Account Settings**, and a **Logout Icon**.
-* Elevated the dropdown z-index to `z-[100]` to prevent options from rendering behind the scrolling `MantraBar` ticker (`z-40`).
-* Added hover-bulge animations and custom tooltips for History, Cart, and Bell icons (e.g. "Your booking history", "Your Wishlist", "Notifications") by extending [Tooltip.tsx](file:///C:/Denumrutham/frontend/src/components/ui/Tooltip.tsx) to support positioning.
+* Elevated the header component container z-index to `relative z-50` and dropdown z-index to `z-[100]`. This forces the header and dropdown menus to render cleanly on top of the sibling scrolling `MantraBar` ticker (`z-40`).
+* Added hover-bulge animations and custom tooltips for History, Cart, Bell, and Logout icons (e.g. "Your booking history", "Your Wishlist", "Notifications", "Log Out") by extending [Tooltip.tsx](file:///C:/Denumrutham/frontend/src/components/ui/Tooltip.tsx) to support positioning.
 
 ### Profile & Account Settings Modals
-* **Your Profile Modal**: Implemented Personal Info (name, DOB, Hindu Birth Month/Star, favorite gods/temples search/select) and a family member builder to manage, add, and remove family members.
-* **Account Settings Modal**: Updates email, phone, and password securely, requiring validation of the devotee's current password.
+* **Global Modal State Store**: Designed a Zustand state store [devoteeModalStore.ts](file:///C:/Denumrutham/frontend/src/store/devoteeModalStore.ts) to manage visibility state (`isProfileOpen`, `isSettingsOpen`) globally.
+* **Viewport Centering & Stacking**: Shifted modal mount points out of the sticky header container to the root shell layouts in [DenumruthamShell.tsx](file:///C:/Denumrutham/frontend/src/layouts/DenumruthamShell.tsx) and [MainLayout.tsx](file:///C:/Denumrutham/frontend/src/layouts/MainLayout.tsx). This bypasses the browser's local coordinate system clipping context created by the header's `backdrop-filter` property, guaranteeing that modal windows display perfectly centered relative to the viewport.
 * **Modal UX Fixes**: Prevented background scrolling when modals are open (`document.body.style.overflow = 'hidden'`), and structured modal card layouts with static headers, tabs, and action footers, allowing only the form contents to scroll.
 
 ### Backend Endpoints & DB Migrations
