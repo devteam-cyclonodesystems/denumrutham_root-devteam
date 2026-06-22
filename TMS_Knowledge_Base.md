@@ -176,3 +176,27 @@ All endpoints enforce multi-tenant isolation validation check checks.
 * **Claim Status Badge Resolution**: Updated backend `resolve_claim_status` to return `"CLAIMED"` for `"GOVERNED"` temples so the devotee UI correctly renders verification badges instead of defaulting them back to `"Unclaimed"`.
 * **Hall Booking Photos**: Updated image configurations for Sree Bhadra Convention Center Balaramapuram to use the correct local asset paths.
 
+---
+
+## 9. Sprint 9 — Devotee Profile Customization, Security Validation & UI Enhancements
+
+### Devotee Signup Validation
+* **Confirm Password field**: Added a "Confirm Password" input field in [Register.tsx](file:///C:/Denumrutham/frontend/src/pages/auth/Register.tsx). Implemented client-side validation to ensure `password === confirmPassword` before initiating sign up.
+* **Password Show/Hide Toggle**: Updated [InputField](file:///C:/Denumrutham/frontend/src/components/ui/index.tsx#L57-L91) component to support toggling password visibility when `type="password"`, automatically rendering an interactive Eye/EyeOff toggle icon.
+
+### Nav Navigation & Header Integration
+* **Devotee Profile Dropdown & Notifications Bell**: Created a unified [DevoteeHeaderMenu](file:///C:/Denumrutham/frontend/src/components/bookings/DevoteeSettingsModals.tsx#L686-L833) navigation component and integrated it into [DenumruthamShell.tsx](file:///C:/Denumrutham/frontend/src/layouts/DenumruthamShell.tsx#L66-L80) and [MainLayout.tsx](file:///C:/Denumrutham/frontend/src/layouts/MainLayout.tsx#L52-L63).
+* Displays a **Bell Icon** (polling platform and followed temple notifications with inline mark-as-read triggers), a styled orange button showing the devotee's name that toggles a dropdown listing **Your Profile** and **Account Settings**, and a **Logout Icon**.
+* Elevated the dropdown z-index to `z-[100]` to prevent options from rendering behind the scrolling `MantraBar` ticker (`z-40`).
+* Added hover-bulge animations and custom tooltips for History, Cart, and Bell icons (e.g. "Your booking history", "Your Wishlist", "Notifications") by extending [Tooltip.tsx](file:///C:/Denumrutham/frontend/src/components/ui/Tooltip.tsx) to support positioning.
+
+### Profile & Account Settings Modals
+* **Your Profile Modal**: Implemented Personal Info (name, DOB, Hindu Birth Month/Star, favorite gods/temples search/select) and a family member builder to manage, add, and remove family members.
+* **Account Settings Modal**: Updates email, phone, and password securely, requiring validation of the devotee's current password.
+* **Modal UX Fixes**: Prevented background scrolling when modals are open (`document.body.style.overflow = 'hidden'`), and structured modal card layouts with static headers, tabs, and action footers, allowing only the form contents to scroll.
+
+### Backend Endpoints & DB Migrations
+* Applied database schema migration revision `27e063926090_add_devotee_profile_extended_fields` on the Neon Postgres database to add `date_of_birth`, `hindu_month`, `hindu_star`, `family_members` (JSONB), `favorite_gods` (JSONB), and `favorite_temples` (JSONB) fields to `devotee_profiles`.
+* Created `PUT /api/v1/auth/me/credentials` endpoint in [auth.py](file:///C:/Denumrutham/backend/app/modules/auth/routes/auth.py) for secure credentials updates.
+* Created `GET /api/v1/devotee/notifications` endpoint in [devotee_bookings.py](file:///C:/Denumrutham/backend/app/modules/bookings/routes/devotee_bookings.py) to fetch relevant notifications.
+
