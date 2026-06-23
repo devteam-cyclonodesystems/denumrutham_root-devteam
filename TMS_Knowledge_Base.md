@@ -212,3 +212,16 @@ All endpoints enforce multi-tenant isolation validation check checks.
 * **Live Refresh Hook**: Added a live profile refresh trigger (`useAuthStore.getState().refreshProfile()`) in [DevoteeSettingsModals.tsx](file:///C:/Denumrutham/frontend/src/components/bookings/DevoteeSettingsModals.tsx) after saving both personal profile and account credentials, instantly updating the devotee's name display on the header button dropdown in the UI.
 * **Persistent Layout Integration**: Relocated the "Current Password (Required to Save)" input field in the account settings modal to the bottom of the form (outside activeTab conditional blocks). This makes the current password field always visible on both the Configure and Preview tabs, allowing devotees to double-check their changes on the preview tab and submit directly.
 
+---
+
+## 11. Sprint 11 — Hero Banner Booking Disclaimers and Tooltip Optimizations
+
+### Devotee Online Bookings Disclaimer
+* **Online Booking Disclaimer**: Wrapped the devotee Hero Banner action buttons ("Book Pooja", "Submit Offering", "Temple Store", and "Hall Booking") in [PortalHeroPreview.tsx](file:///C:/Denumrutham/frontend/src/pages/manager/website/preview/PortalHeroPreview.tsx) inside a descriptive Tooltip stating: `"Online booking for this temple has not started yet. Please follow this temple to receive a notification when online booking sevices become available."`
+* **Action Locking**: Replaced the direct button action handlers in the devotee portal layout with `handleDisabledClick` to block modal trigger events, while enabling hover/click disclaimers.
+
+### Tooltip Upgrades & TS Hardening
+* **Long Tooltip Formatting**: Enhanced the [Tooltip.tsx](file:///C:/Denumrutham/frontend/src/components/ui/Tooltip.tsx) component to dynamically detect long descriptions (length > 40). Long messages wrap beautifully at `w-72` and display with a clean, readable normal-case font weight and relaxed line-height. Keeps micro-uppercase styling intact for standard short icons/labels. Added toggle-on-click listeners for touch device compatibility.
+* **Strict Compilation Compliance**: Resolved strict TS compilation warnings (`TS6133`) under Vite production builds regarding unused parameters and variables.
+
+
