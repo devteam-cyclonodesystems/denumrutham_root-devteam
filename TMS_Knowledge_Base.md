@@ -224,4 +224,45 @@ All endpoints enforce multi-tenant isolation validation check checks.
 * **Long Tooltip Formatting**: Enhanced the [Tooltip.tsx](file:///C:/Denumrutham/frontend/src/components/ui/Tooltip.tsx) component to dynamically detect long descriptions (length > 40). Long messages wrap beautifully at `w-72` and display with a clean, readable normal-case font weight and relaxed line-height. Keeps micro-uppercase styling intact for standard short icons/labels. Added toggle-on-click listeners for touch device compatibility.
 * **Strict Compilation Compliance**: Resolved strict TS compilation warnings (`TS6133`) under Vite production builds regarding unused parameters and variables.
 
+---
+
+## 12. Sprint 12 — API Governance, Swagger Alignment & Least-Privilege Security
+
+### Security & RBAC Standardizations
+* **Settlements Router Permission**: Guarded `/temple/settlements/history` and `/temple/settlements/dashboard` routes using `Depends(require_permission("finance", "view"))` (replacing the legacy `"website"` permission key).
+* **Bank Account Controls**: Guarded POST `/temple/bank-account` with `Depends(require_permission("finance", "write"))` and GET `/temple/bank-accounts` with `Depends(require_permission("finance", "view"))`.
+* **Manual Transactions Guard**: Applied `Depends(require_permission("finance", "write"))` to POST `/transactions` and `Depends(require_permission("finance", "view"))` to GET `/transactions`.
+
+### Enterprise Master Ledger SOT Unification
+* **Archana Booking Write Path**: Refactored `archana_service.py` to write booking ledger entries directly to the master `transactions` table via `TransactionService.create_transaction`.
+* **Revenue Metrics Aggregation**: Updated `AccountingService.get_financial_kpis` to aggregate dashboard revenue KPIs from the master `transactions` table instead of the deprecated `financial_ledger` table.
+
+### Standardized Response Schemas (Pydantic Serialization)
+* Defined strict Pydantic serialization models and envelope schemas in `finance_routes.py` for:
+  - `PlatformFinancialAccountResponse`
+  - `BankAccountResponse` (with masked account number)
+  - `BankAccountPendingResponse` (with masked account number by default)
+  - `BankAccountRevealResponse` (containing decrypted/unmasked account number for audited reveals)
+  - `SettlementBatchResponse`
+  - `SettlementBatchApprovalResponse`
+  - `SettlementBatchCompleteResponse`
+  - `SettlementBatchGenerationResult`
+* Configured router decorator responses (e.g. `responses={200: {"model": BankAccountListEnvelope}}`) to ensure explicit contract visibility in Swagger documentation.
+
+### Swagger Tag Reorganization
+* Updated all FastAPI router registrations in `app/api/api_v1/api.py` to organize all platform endpoints under the standardized 19 workflow tag divisions:
+  - `Authentication`, `Dashboard`, `Temple Profile`, `Finance`, `Bookings`, `Poojas`, `Inventory`, `Hall Booking`, `Website Builder`, `Advertisements`, `Notifications`, `Reports`, `Settings`, `Temple Governance`, `Platform Governance`, `Discovery`, `Analytics`, `Audit`, `System`.
+
+### Least-Privilege Security Reveal & Audit hooks
+* **Masked by Default**: `GET /admin/bank-accounts/pending` now masks the bank account numbers by default for Super Admins.
+* **Audited Reveal Endpoint**: Created `POST /admin/bank-accounts/{id}/reveal` allowing Super Admins to reveal the full account number on-demand.
+* **Audit Trail Hook**: Decryption of bank details triggers `BANK_ACCOUNT_REVEALED` event of `HIGH` severity (risk score: 50) logged to the `ImmutableActivityLog` chain.
+
+### Frontend Service Layer Consolidation
+* Created **`financeService.ts`** under `frontend/src/services/` to encapsulate all Axios endpoints for bank accounts, platform accounts, and settlement batches.
+* Refactored **`FinanceModule.tsx`** and **`FinanceGovernance.tsx`** to consume `financeService` instead of direct Axios calls.
+* **Inline Reveal Button**: Added a "Reveal" button next to bank accounts on the Super Admin verification list (`FinanceGovernance.tsx`) to show the full account number inline when clicked.
+* Connected mock **`AdminApprovals.tsx`** view to active backend endpoints `/admin/onboarding/temple-requests`, `/admin/onboarding/approve-temple/{id}`, and `/admin/onboarding/reject-temple/{id}`.
+
+
 
