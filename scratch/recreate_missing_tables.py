@@ -13,7 +13,7 @@ from app.core.database.database import Base
 from app.models import domain  # This triggers imports of all domain models
 
 async def run():
-    url = "postgresql+asyncpg://neondb_owner:npg_R3hWbAYn0tuI@ep-proud-shadow-aom9gssv-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb"
+    url = "postgresql+asyncpg://neondb_owner:npg_6Ii0uTBKbaZP@ep-old-queen-aoeyozad-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
     engine = create_async_engine(url, connect_args={"ssl": True})
     
     # 1. Fetch current tables from database

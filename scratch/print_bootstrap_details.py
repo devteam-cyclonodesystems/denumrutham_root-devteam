@@ -4,7 +4,7 @@ import sys
 import json
 
 # Set the DATABASE_URL environment variable to production database
-os.environ["DATABASE_URL"] = "postgresql+asyncpg://neondb_owner:npg_R3hWbAYn0tuI@ep-proud-shadow-aom9gssv-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb"
+os.environ["DATABASE_URL"] = "postgresql+asyncpg://neondb_owner:npg_6Ii0uTBKbaZP@ep-old-queen-aoeyozad-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
 
 sys.path.append("c:/Denumrutham/backend")
 from app.main import app
